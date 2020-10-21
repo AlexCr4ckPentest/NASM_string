@@ -1,7 +1,7 @@
 %ifndef __STR_INC__
 %define __STR_INC__
 
-%macro .STRING 2
+%macro .STRING 2+
     %1 db %2, 0x0
 %endmacro
 
