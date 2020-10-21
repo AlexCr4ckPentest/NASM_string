@@ -16,6 +16,20 @@ section .text
 ; eax - string
 ; output: eax - string length
 _strlen:
+    push ebx
+
+    lea ebx, dword [eax] ; ptr_at_begin
+
+    .check_next:            ; while (*char_ptr != 0x0)
+        cmp [eax], byte 0x0
+        je .end
+        inc eax             ; char_ptr++
+        jmp .check_next
+
+    .end:
+        sub eax, ebx ; char_ptr - ptr_at_begin
+
+    pop ebx
     ret
 
 
